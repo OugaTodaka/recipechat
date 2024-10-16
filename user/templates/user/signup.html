@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+{% block title %}signup{% endblock %}
+{% block contents %}
+
+<div>
+    <h2>ユーザー登録</h2>
+    <form action="{% url 'signup' %}">
+        {% csrf_token %}
+        <p><input type="text" name="username" placeholder="ユーザー名"></p>
+        <p><input type="password" name="password" placeholder="パスワード"></p>
+        <input type="submit" value="ユーザー作成">
+    </form>
+</div>
+
+{% endblock %}
