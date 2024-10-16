@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,10 @@ DATABASES = {
     }
 }
 
+# AuthUserModel
+
+AUTH_USER_MODEL = "user.CustomUser"
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -98,6 +104,10 @@ TIME_ZONE = 'Asia/Tokyo'
 USE_I18N = True
 
 USE_TZ = True
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y/%m/%d %H:%M',
+}
 
 
 # Static files (CSS, JavaScript, Images)
