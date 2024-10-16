@@ -1,8 +1,8 @@
-from django.contrib import admin
 from django.urls import path
+from . import views
 
-app_name = 'chat'
+app_name = 'favorite'
 
 urlpatterns = [
-    
+    path("",views.FavoriteView.as_view(),name='favorite')
 ]
