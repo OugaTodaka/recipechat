@@ -1,4 +1,5 @@
 myvenv
+.idea
 db.sqlite3
 .vscode
 __pycache__
