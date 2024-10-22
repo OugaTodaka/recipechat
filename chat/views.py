@@ -1,7 +1,7 @@
-from django.views.generic import ListView
+from django.views.generic import FormView
 from .models import Chat
 
-class ChatView(ListView):
+class ChatView(FormView):
     template_name = "chat/chat.html"
     model = Chat
     def get_queryset(self):
@@ -10,4 +10,5 @@ class ChatView(ListView):
         context = super().get_context_data(**kwargs)
         print(context)
         return context
-    
+    def form_valid(self, form):
+
