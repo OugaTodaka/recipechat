@@ -5,6 +5,7 @@ class Favorite(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     link = models.CharField(max_length=255)
+    img_link = models.CharField(max_length=255)
     favo_at = models.DateTimeField(auto_now=True)
     is_delete = models.BooleanField(default=False)
     

@@ -1,27 +1,14 @@
-{% extends "main/base.html" %}
+{% extends "favorite/base.html" %}
 {% block title %}chat{% endblock %}
 {% block contents %}
 <div class="main">
-    <h3>レシピチャット</h3>
-    <div class="chat">
+    <h3>お気に入りのレシピリンク一覧</h3>
+    <div class="favorite">
     <ul>
-    {% for chat in object_list %}
-    {% if chat.is_system %}
-    <li id="system">
-        <div>
-            <p>{{ chat.detail }}</p>
-            <p>{{ chat.link }}</p>
-            <p>{{ chat.send_at }}</p>
-        </div>
-    {% else %}
-    <li id="user">
-        <div>
-            <p>{{ chat.detail }}</p>
-            <p>{{ chat.send_at }}</p>
-        </div>
-    {% endif %}
-
-    </li>
+    {% for favorite in object_list %}
+        <li>{{ favorite.id }}</li>
+        <li>{{ favorite.title }}</li>
+        <li>{{ favorite.link }}</li>
     {% endfor %}
     </ul>
     </div>
