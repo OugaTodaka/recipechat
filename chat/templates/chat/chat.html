@@ -6,7 +6,7 @@
     <h3>レシピチャット</h3>
     <div class="chat">
     <ul>
-    {% for chat in object_list %}
+    {% for chat in chatdata %}
     {% if chat.is_system %}
     <li id="system">
         <div>
@@ -28,6 +28,7 @@
     </div>
     <footer>
         <form id="form"  action="/" method="post">
+            {% csrf_token %}
             <input type="text" name="chat"/>
             <button type="button" id="submit-button">送信</button>
         </form>

@@ -1,7 +1,7 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Chat
 
-class ChatForm(ModelForm):
+class ChatForm(forms.ModelForm):
     class Meta:
         model = Chat
-        fields = ["chat"]
+        fields = ["detail"]
