@@ -6,9 +6,12 @@
     <div class="favorite">
     <ul>
     {% for favorite in object_list %}
+        {% if not favorite.is_delete %}
         <li>{{ favorite.id }}</li>
         <li>{{ favorite.title }}</li>
         <li>{{ favorite.link }}</li>
+        <li><a href="{{favorite.id}}/delete/">○</a></li>
+        {% endif %}
     {% endfor %}
     </ul>
     </div>
