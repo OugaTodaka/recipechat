@@ -4,5 +4,6 @@ from . import views
 app_name = 'favorite'
 
 urlpatterns = [
-    path("",views.FavoriteView.as_view(),name='favorite')
+    path("",views.FavoriteView.as_view(),name="favorite"),
+    path("<int:favorite_id>/delete/",views.favorite_delete,name='delete'),
 ]
