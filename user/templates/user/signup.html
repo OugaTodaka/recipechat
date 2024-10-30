@@ -4,7 +4,7 @@
 
 <div>
     <h2>ユーザー登録</h2>
-    <form action="{% url 'signup' %}">
+    <form action="{% url 'user:signup_sys' %}" method="post">
         {% csrf_token %}
         <p><input type="text" name="username" placeholder="ユーザー名"></p>
         <p><input type="password" name="password" placeholder="パスワード"></p>
