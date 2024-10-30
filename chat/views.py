@@ -10,8 +10,11 @@ class ChatView(FormView):
 #     def get_queryset(self):
 #         return Chat.objects.filter(user=self.request.user).order_by("send_at"
     def form_valid(self,form):
-        form.save()
-        return super().form_valid(form)
+        user = self.request.user
+        detail = form.cleaned_data['chat']
+        chat = {user,detail}
+        chat.save()
+        return super().form_valid(chat)
 
     def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)

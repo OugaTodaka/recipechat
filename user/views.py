@@ -17,17 +17,11 @@ def signup(request):
 def signup_sys(request):
     try:
         username = request.POST['username']
-        print("ゆーざーーーーーーーーーーーーーーーーーー")
         password = request.POST['password']
-        print("ぱすーーーーーーーーーーーーーーーーーーーーーーーーー")
         pass_word = make_password(password)
-        print("はっしゅーーーーーーーーーーーーーーーーーーー")
         new_user = CustomUser(username=username, password=pass_word)
-        print("かすたむゆーざーーーーーー")
         new_user.save()
-        print("ほぞんーーーーーーーーーーーー")
         login(request, new_user)
-        print("ろぐいんーーーーーーーーーーーーーーーーーー")
         return HttpResponseRedirect('/')
     except:
         return HttpResponse('ユーザ作成に失敗しました')
