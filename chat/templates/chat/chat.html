@@ -29,7 +29,8 @@
     <footer>
         <form id="form"  action="/" method="post">
             {% csrf_token %}
-            <input type="text" name="chat"/>
+            <label for="id_detail">使いたい食材を入力</label>
+            {{form.detail}}
             <button type="button" id="submit-button">送信</button>
         </form>
     </footer>

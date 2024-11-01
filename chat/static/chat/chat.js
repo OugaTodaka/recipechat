@@ -11,6 +11,7 @@ submitButton.onclick = () => {
   fetch(action, options).then((e) => {
     if(e.status === 200) {
       alert("保存しました。")
+      window.location.href="http://127.0.0.1:8000/"
       return
     }
     alert("保存できませんでした。")
