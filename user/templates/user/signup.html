@@ -6,8 +6,8 @@
     <h2>ユーザー登録</h2>
     <form action="{% url 'user:signup_sys' %}" method="post">
         {% csrf_token %}
-        <p><input type="text" name="username" placeholder="ユーザー名"></p>
-        <p><input type="password" name="password" placeholder="パスワード"></p>
+        <p><input type="text" name="username" placeholder="ユーザー名" required></p>
+        <p><input type="password" name="password" placeholder="パスワード" required></p>
         <input type="submit" value="ユーザー作成">
     </form>
 </div>

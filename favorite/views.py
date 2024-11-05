@@ -1,11 +1,14 @@
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Favorite
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class FavoriteView(ListView):
+class FavoriteView(LoginRequiredMixin,ListView):
     template_name = "favorite/favorite.html"
     model = Favorite
+    login_url = reverse_lazy('user:signin')
+
     def get_queryset(self):
         return Favorite.objects.filter(user=self.request.user).order_by("favo_at")
     def get_context_data(self, **kwargs):

@@ -9,6 +9,7 @@ class ChatView(LoginRequiredMixin,FormView):
     template_name = "chat/chat.html"
     success_url = reverse_lazy('chat:chat')
     form_class = ChatForm
+    login_url = reverse_lazy('user:signin')
 
     def form_valid(self,form):
         chat = form.save(commit=False)
