@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+{% block title %}login{% endblock %}
+{% block contents %}
+
+<div>
+    <h2>ログイン</h2>
+    <form action="{% url 'user:signin_sys' %}" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="username" placeholder="ユーザー名" required></p>
+        <p><input type="password" name="password" placeholder="パスワード" required></p>
+        <input type="submit" value="ログイン">
+    </form>
+</div>
+
+{% endblock %}

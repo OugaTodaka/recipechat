@@ -1,12 +1,32 @@
-from django.views.generic import ListView
+from django.views.generic import FormView
 from .models import Chat
+from django.urls import reverse_lazy
+from .forms import ChatForm
+from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class ChatView(ListView):
+class ChatView(LoginRequiredMixin,FormView):
     template_name = "chat/chat.html"
-    model = Chat
-    def get_queryset(self):
-        return Chat.objects.filter(user=self.request.user).order_by("send_at")
+    success_url = reverse_lazy('chat:chat')
+    form_class = ChatForm
+    login_url = reverse_lazy('user:signin')
+
+    def form_valid(self,form):
+        chat = form.save(commit=False)
+        chat.user = self.request.user
+        chat.link = None
+        chat.img_link = None
+        chat.is_system = False
+        chat.send_at = timezone.now()
+        chat.save()
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        return context
+            context = super().get_context_data(**kwargs)
+            context['chatdata'] = Chat.objects.filter(user=self.request.user).order_by("send_at")
+            return context
+
+
+
+
+

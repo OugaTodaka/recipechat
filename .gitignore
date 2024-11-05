@@ -1,6 +1,10 @@
 myvenv
+favorite/migrations
+chat/migrations
+user/migrations
 db.sqlite3
 .vscode
 __pycache__
 *.pyc
 .DS_Store
+.idea
