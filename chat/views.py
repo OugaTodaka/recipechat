@@ -29,13 +29,36 @@ class ChatView(LoginRequiredMixin,FormView):
         chat.send_at = timezone.now()
         chat.save()
         target_keyword = chat.detail + " レシピ"
-        getSearchResponse(target_keyword)
+        sys_response = getSearchResponse(target_keyword)
+        result = []
+        for entry in sys_response.get("items", []):
+            title = entry.get("title")
+            link = entry.get("link")
+            og_image = None
+            metatags = entry.get("pagemap", {}).get("metatags", [])
+            for tag in metatags:
+                if "og:image" in tag:
+                    og_image = tag["og:image"]
+                    break
+            result.append({"title": title, "link": link, "og:image": og_image})
+
+        # 結果を表示
+        print(result)
+        # for i in range(len(sys_response.items)):   
+        #     Chat.objects.create(user = self.request.user,
+        #                         detail = sys_response.items.title,
+        #                         link = sys_response.items.link,
+        #                         img_link = None,
+        #                         is_system = True,
+        #                         send_at = timezone.now()
+        #                         )
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
             context['chatdata'] = Chat.objects.filter(user=self.request.user).order_by("send_at")
             return context
+
 def getSearchResponse(keyword):
     today = datetime.datetime.today().strftime("%Y%m%d")
     timestamp = datetime.datetime.today().strftime("%Y/%m/%d %H:%M:%S")
@@ -60,7 +83,9 @@ def getSearchResponse(keyword):
         except Exception as e:
             print(e)
             break
-    print(response)
+    j_response = response[0]
+    print(j_response)
+    return j_response
 
 
 
