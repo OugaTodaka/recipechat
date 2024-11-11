@@ -13,6 +13,7 @@
             <p><a href="{{chat.link }}">{{ chat.detail }}</a> </p>
             <p><img src="{{chat.img_link }}"></p>
             <p>{{ chat.send_at }}</p>
+            <p><a href="{% url 'favorite:add' chat.id %}">★</a></p>
         </div>
     {% else %}
     <li id="user">
