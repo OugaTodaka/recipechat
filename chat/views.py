@@ -44,14 +44,14 @@ class ChatView(LoginRequiredMixin,FormView):
 
         # 結果を表示
         print(result)
-        # for i in range(len(sys_response.items)):   
-        #     Chat.objects.create(user = self.request.user,
-        #                         detail = sys_response.items.title,
-        #                         link = sys_response.items.link,
-        #                         img_link = None,
-        #                         is_system = True,
-        #                         send_at = timezone.now()
-        #                         )
+        for i in result:   
+            Chat.objects.create(user = self.request.user,
+                                detail = i['title'],
+                                link = i['link'],
+                                img_link = i['og:image'],
+                                is_system = True,
+                                send_at = timezone.now()
+                                )
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -84,7 +84,6 @@ def getSearchResponse(keyword):
             print(e)
             break
     j_response = response[0]
-    print(j_response)
     return j_response
 
 
