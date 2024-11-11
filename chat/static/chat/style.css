@@ -26,3 +26,31 @@ li{
     text-align: right;
     background-color: darkgrey;
 }
+img{
+    width: auto;
+    height: 180px;
+}
+
+
+
+/* 親要素であるulにflexboxを適用 */
+.chat-list {
+    display: flex;             /* フレックスボックスを有効化 */
+    flex-wrap: wrap;           /* アイテムがコンテナを超えた場合に折り返す */
+    justify-content: space-around;  /* アイテム間に均等にスペースを空ける */
+    padding: 0;
+    list-style-type: none;
+}
+
+/* 画像を含むli要素のスタイル */
+.chat-list #system {
+    width: 45%;                /* 2列にしたいので、45%の幅を設定 */
+    margin-bottom: 10px;       /* 各アイテム間にスペースを空ける */
+    text-align: center;        /* 中央揃え */
+}
+
+/* 画像自体のスタイル */
+.chat-list img {
+    max-width: 100%;           /* 画像が親要素の幅に収まるように */
+    height: auto;              /* 画像の高さは自動で調整 */
+}

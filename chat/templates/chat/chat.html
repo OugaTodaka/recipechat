@@ -5,13 +5,17 @@
 <div class="main">
     <h3>レシピチャット</h3>
     <div class="chat">
-    <ul>
+    <ul class="chat-list">
     {% for chat in chatdata %}
     {% if chat.is_system %}
     <li id="system">
         <div>
-            <p><a href="{{chat.link }}">{{ chat.detail }}</a> </p>
-            <p><img src="{{chat.img_link }}"></p>
+            <p>
+                {{chat.detail }}
+                <a href="{{chat.link }}">
+                    <img src="{{chat.img_link }}">
+                </a>
+            </p>
             <p>{{ chat.send_at }}</p>
         </div>
     {% else %}
