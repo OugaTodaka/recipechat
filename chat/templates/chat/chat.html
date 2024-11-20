@@ -3,10 +3,16 @@
 {% block title %}chat{% endblock %}
 {% block contents %}
 <div class="main">
-    <h3>レシピチャット</h3>
+    <h3>レシピチャット
+        <nobr>
+            {{request.user}}
+            <a href="{% url 'favorite:favorite' %}">お気に入り一覧</a>
+            <a href="{% url 'user:signout_sys' %}">ログアウト</a>
+        </nobr>
+    </h3>   
     <div class="chat">
-    <ul class="chat-list">
-    {% for chat in chatdata %}
+        <ul class="chat-list">
+        {% for chat in chatdata %}
     {% if chat.is_system %}
     <li id="system">
         <div>

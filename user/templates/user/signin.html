@@ -2,14 +2,40 @@
 {% block title %}login{% endblock %}
 {% block contents %}
 
+{% if form.errors %}
+  <p style="color: red;">ユーザー名とパスワードが一致しません。</p>
+{% endif %}
 <div>
     <h2>ログイン</h2>
-    <form action="{% url 'user:signin_sys' %}" method="post">
+    <form method="post">
         {% csrf_token %}
-        <p><input type="text" name="username" placeholder="ユーザー名"></p>
-        <p><input type="password" name="password" placeholder="パスワード"></p>
-        <input type="submit" value="ログイン">
+        <input type="text"
+               name="username"
+               id="id_username"
+               maxlength="150"
+               autocapitalize="none"
+               autocomplete="username"
+               class="form-control"
+               placeholder="ユーザー名"
+               required autofocus>
+
+        <input type="password"
+               name="password"
+               id="id_password"
+               autocomplete="current-password"
+               class="form-control"
+               placeholder="パスワード"
+               required autofocus>
+
+        <input class="w-100 btn btn-lg btn-primary"
+               type="submit"
+               value="ログイン">
+
+        <input type="hidden"
+               name="next"
+               value="{% url 'chat:chat' %}">
     </form>
+    <p>アカウントをお持ちでない場合は<a href="{% url 'user:signup' %}">登録</a></p>
 </div>
 
 {% endblock %}

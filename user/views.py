@@ -4,6 +4,7 @@ from django.template import loader
 from user.models import CustomUser
 from django.contrib.auth import login, logout
 from django.contrib.auth.hashers import check_password,make_password
+from django.views.generic import CreateView
 
 def signin(request):
     template = loader.get_template("user/signin.html")
@@ -20,7 +21,8 @@ def signup_sys(request):
         password = request.POST['password']
         pass_word = make_password(password)
         new_user = CustomUser(username=username, password=pass_word)
-        new_user.save()
+        new_user.save() #おなじユーザあったらerror
+
         login(request, new_user)
         return HttpResponseRedirect('/')
     except:

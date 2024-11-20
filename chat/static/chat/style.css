@@ -6,10 +6,17 @@
     text-align: center;
     width: 50%;
     margin: 2%;
+    
 }
 .chat{
     border: 3px solid black;
-}
+    width: 100%;
+    height: 550px;
+    background-color: #fff;
+    padding: 20px 10px;
+    /* 縦スクロールの設定 */
+    overflow-y: scroll;
+    }
 ul{
     height: auto;
     list-style: none;
@@ -54,3 +61,12 @@ img{
     max-width: 100%;           /* 画像が親要素の幅に収まるように */
     height: auto;              /* 画像の高さは自動で調整 */
 }
+
+/* position:fixed;
+background:#56072f;
+height:100%;
+width:200px;
+display:flex;
+justify-content: center;
+align-items: center;
+overflow-y: scroll; */
