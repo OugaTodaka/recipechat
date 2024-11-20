@@ -60,9 +60,6 @@ class ChatView(LoginRequiredMixin,FormView):
             return context
 
 def getSearchResponse(keyword):
-    today = datetime.datetime.today().strftime("%Y%m%d")
-    timestamp = datetime.datetime.today().strftime("%Y/%m/%d %H:%M:%S")
-
 
     service = build("customsearch", "v1", developerKey=GOOGLE_API_KEY)
 
