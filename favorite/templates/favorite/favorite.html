@@ -8,10 +8,10 @@
     <ul>
     {% for favorite in object_list %}
         {% if not favorite.is_delete %}
-        <li>{{ favorite.id }}</li>
         <li>{{ favorite.title }}</li>
-        <li>{{ favorite.link }}</li>
-        <img src="{{ favorite.img_link }}">
+        <a href="{{ favorite.link }}">
+            <img src="{{ favorite.img_link }}">
+        </a>
         <li><a class="delete" href="{{favorite.id}}/delete/">○</a></li>
         {% endif %}
     {% endfor %}
