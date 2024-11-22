@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    text-align: center;
+    width: 50%;
+    margin: 2%;
+}
+
+.favorite{
+    border: 3px solid black;
+}
+
+ul{
+    height: auto;
+    list-style: none;
+}
+
+li{
+    width: 96%;
+    padding: 3px 2%;
+}
+
+img{
+    width: auto;
+    height: 180px;
+}
