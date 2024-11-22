@@ -62,6 +62,16 @@ img{
     height: auto;              /* 画像の高さは自動で調整 */
 }
 
+.icon {
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.login_info {
+    float: right;
+}
+
 /* position:fixed;
 background:#56072f;
 height:100%;
