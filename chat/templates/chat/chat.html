@@ -20,7 +20,12 @@
             <p>
                 {{chat.detail }}
                 <a href="{{chat.link }}">
-                    <img src="{{chat.img_link }}">
+                    {% if chat.img_link %}
+                    <!-- なんか赤くなってるかもだけどこれでちゃんと表示できてるので気にしない -->
+                    <img src="{{chat.img_link }}" onError="this.src='{% static 'chat/noimage.png' %}'">
+                    {% else %}
+                    <img src="{% static 'chat/noimage.png' %}">
+                    {% endif %}
                 </a>
             </p>
             <p>{{ chat.send_at }}</p>
