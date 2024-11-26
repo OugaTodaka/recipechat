@@ -33,10 +33,10 @@ li{
     text-align: right;
     background-color: darkgrey;
 }
-img{
+/* img{
     width: auto;
     height: 180px;
-}
+} */
 
 
 
@@ -63,9 +63,10 @@ img{
 }
 
 .icon {
-    height: 50px;
-    width: 50px;
-    float: left;
+    height: 10px;
+    width: auto;
+    /* float: left; */
+    text-align: left;
 }
 
 .login_info {
