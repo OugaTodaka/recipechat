@@ -14,7 +14,6 @@ class FavoriteView(LoginRequiredMixin,ListView):
         return Favorite.objects.filter(user=self.request.user).order_by("favo_at")
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
         return context
 
 def favorite_add(request,chat_id):

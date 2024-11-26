@@ -43,7 +43,7 @@ class ChatView(LoginRequiredMixin,FormView):
             result.append({"title": title, "link": link, "og:image": og_image})
 
         # 結果を表示
-        print(result)
+        # print(result)
         for i in result:   
             Chat.objects.create(user = self.request.user,
                                 detail = i['title'],
