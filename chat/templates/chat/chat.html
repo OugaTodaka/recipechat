@@ -3,16 +3,33 @@
 {% block title %}chat{% endblock %}
 {% block contents %}
 <div class="main">
-    <h3>レシピチャット</h3>
+    <nobr>
+        <div class="icon"><img src="{% static 'chat/RecipeChat.png' %}"></div>
+        <div class="login_info">
+            <br>{{request.user}}
+            <br><a href="{% url 'favorite:favorite' %}">お気に入り一覧</a>
+            <br><a href="{% url 'user:signout_sys' %}">ログアウト</a>
+        </div>
+    </nobr> 
     <div class="chat">
-    <ul>
-    {% for chat in chatdata %}
+        <ul class="chat-list">
+        {% for chat in chatdata %}
     {% if chat.is_system %}
     <li id="system">
         <div>
-            <p>{{ chat.detail }}</p>
-            <p>{{ chat.link }}</p>
+            <p>
+                {{chat.detail }}
+                <a href="{{chat.link }}">
+                    {% if chat.img_link %}
+                    <!-- なんか赤くなってるかもだけどこれでちゃんと表示できてるので気にしない -->
+                    <img src="{{chat.img_link }}" onError="this.src='{% static 'chat/noimage.png' %}'">
+                    {% else %}
+                    <img src="{% static 'chat/noimage.png' %}">
+                    {% endif %}
+                </a>
+            </p>
             <p>{{ chat.send_at }}</p>
+            <p><a href="{% url 'favorite:add' chat.id %}">★</a></p>
         </div>
     {% else %}
     <li id="user">

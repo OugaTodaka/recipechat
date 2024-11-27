@@ -1,19 +1,29 @@
 {% extends "favorite/base.html" %}
+{% load static %}
 {% block title %}chat{% endblock %}
 {% block contents %}
 <div class="main">
     <h3>お気に入りのレシピリンク一覧</h3>
+    <a href="{% url 'chat:chat' %}">チャットに戻る</a>
     <div class="favorite">
     <ul>
     {% for favorite in object_list %}
         {% if not favorite.is_delete %}
-        <li>{{ favorite.id }}</li>
-        <li>{{ favorite.title }}</li>
-        <li>{{ favorite.link }}</li>
-        <li><a href="{{favorite.id}}/delete/">○</a></li>
+        <li>{{ favorite.title }}
+        <a href="{{ favorite.link }}">
+            {% if favorite.img_link %}
+            <img src="{{ favorite.img_link }}"  onError="this.src='{% static 'chat/noimage.png' %}'">
+            {% else %}
+            <img src="{% static 'favorite/noimage.png' %}">
+            {% endif %}
+        </a>
+        <br>
+        <a class="delete" href="{{favorite.id}}/delete/">お気に入りから削除</a></li>
         {% endif %}
     {% endfor %}
     </ul>
     </div>
+    <a href="{% url 'chat:chat' %}">チャットに戻る</a>
+    <script src="{% static 'favorite/favorite.js' %}"></script>
 </div>
 {% endblock %}

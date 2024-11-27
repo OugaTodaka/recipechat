@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    text-align: center;
+    width: 50%;
+    margin: 2%;
+}
+
+.favorite{
+    border: 3px solid black;
+}
+
+ul{
+    height: auto;
+    list-style: none;
+}
+
+li{
+    width: max;
+    padding: 3px 2%;
+    border: 2px solid gainsboro;
+}
+
+img{
+    width: auto;
+    height: 180px;
+}
