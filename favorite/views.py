@@ -1,9 +1,10 @@
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Favorite
 from chat.models import Chat
 from django.urls import reverse_lazy
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 class FavoriteView(LoginRequiredMixin,ListView):

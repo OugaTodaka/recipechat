@@ -9,6 +9,7 @@
     <h2>ログイン</h2>
     <form method="post">
         {% csrf_token %}
+
         <input type="text"
                name="username"
                id="id_username"
@@ -34,6 +35,7 @@
         <input type="hidden"
                name="next"
                value="{% url 'chat:chat' %}">
+
     </form>
     <p>アカウントをお持ちでない場合は<a href="{% url 'user:signup' %}">登録</a></p>
 </div>
