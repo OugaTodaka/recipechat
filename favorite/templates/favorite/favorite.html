@@ -7,6 +7,7 @@
     <a href="{% url 'chat:chat' %}">チャットに戻る</a>
     <div class="favorite">
     <ul>
+    {% if object_list %}
     {% for favorite in object_list %}
         {% if not favorite.is_delete %}
         <li>{{ favorite.title }}
@@ -21,6 +22,11 @@
         <a class="delete" href="{{favorite.id}}/delete/">お気に入りから削除</a></li>
         {% endif %}
     {% endfor %}
+    {% else %}
+    <li>
+        まだなにもないよ
+    </li>
+    {% endif %}
     </ul>
     </div>
     <a href="{% url 'chat:chat' %}">チャットに戻る</a>
